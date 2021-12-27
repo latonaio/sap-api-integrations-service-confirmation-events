@@ -1,0 +1,202 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Service Confirmation",
+		"version": "1.0",
+		"description": "A service confirmation is a record of services, spare parts, and expenses that a service performer reports back after carrying out a service for a customer. The following events are available for service confirmation: \n - Service confirmation changed \n - Service confirmation created \n - Service confirmation deleted"
+	},
+	"externalDocs": {
+		"description": "Business Documentation",
+		"url": "https://help.sap.com/viewer/e94543741b6142e198a86f908c698978/2021.000/en-US/43cf1ef33e4f4d83bb8d079b35affcfe.html"
+	},
+	"components": {
+		"schemas": {
+			"sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Changed.v1": {
+				"type": "object",
+				"properties": {
+					"ServiceConfirmation": {
+						"type": "string"
+					}
+				}
+			},
+			"sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Created.v1": {
+				"type": "object",
+				"properties": {
+					"ServiceConfirmation": {
+						"type": "string"
+					}
+				}
+			},
+			"sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Deleted.v1": {
+				"type": "object",
+				"properties": {
+					"ServiceConfirmation": {
+						"type": "string"
+					}
+				}
+			},
+			"CloudContext": {
+				"title": "Schema for the CloudEvents context fields.",
+				"description": "This is a schema specification for the context fields as per CloudEvent standards.",
+				"type": "object",
+				"properties": {
+					"specversion": {
+						"description": "The version of the CloudEvents specification which the event uses. This enables the interpretation of the context.",
+						"type": "string"
+					},
+					"type": {
+						"description": "Type of occurrence which has happened. Often this property is used for routing, observability, policy enforcement, etc.",
+						"type": "string",
+						"minLength": 1
+					},
+					"source": {
+						"description": "This describes the event producer.",
+						"type": "string",
+						"format": "uri-reference"
+					},
+					"subject": {
+						"description": "The subject of the event in the context of the event producer (identified by source).",
+						"type": "string",
+						"minLength": 1
+					},
+					"id": {
+						"description": "ID of the event.",
+						"type": "string",
+						"minLength": 1
+					},
+					"time": {
+						"description": "Timestamp of when the occurrence happened. Must adhere to RFC 3339.",
+						"type": "string",
+						"format": "date-time"
+					},
+					"datacontenttype": {
+						"description": "Describe the data encoding format",
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"specversion",
+					"source",
+					"type"
+				]
+			}
+		}
+	},
+	"paths": {
+		"/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Changed.v1": {
+			"post": {
+				"tags": [
+					"Changed"
+				],
+				"x-payload": "",
+				"description": "This event is raised when a service confirmation is changed.",
+				"summary": "Service Confirmation Changed",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Changed.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		},
+		"/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Created.v1": {
+			"post": {
+				"tags": [
+					"Created"
+				],
+				"x-payload": "",
+				"description": "This event is raised when a service confirmation is created.",
+				"summary": "Service Confirmation Created",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Created.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		},
+		"/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Deleted.v1": {
+			"post": {
+				"tags": [
+					"Deleted"
+				],
+				"x-payload": "",
+				"description": "This event is raised when a service confirmation is deleted.",
+				"summary": "Service Confirmation Deleted",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.serviceconfirmation.v1.ServiceConfirmation.Deleted.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		}
+	}
+}
